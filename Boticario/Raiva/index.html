@@ -94,6 +94,25 @@ h1 { font-size: 3rem; color: #FFD1D1; margin-bottom: 1rem; font-weight: 700; tex
 .message-text { font-size: 1.5rem; color: #FFF5F5; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
 .message-author { font-size: 1rem; color: #FFD1D1; font-weight: 600; position: relative; z-index: 2; }
 
+#newMessageBtn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #D32F2F, #FF6B6B);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+#newMessageBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
 @media (max-width:768px){
     h1{font-size:2rem;}
     .message-text{font-size:1.2rem;}
@@ -112,6 +131,7 @@ h1 { font-size: 3rem; color: #FFD1D1; margin-bottom: 1rem; font-weight: 700; tex
 <div class="message-card">
 <p class="message-text" id="supportMessage">Carregando mensagem de apoio...</p>
 <p class="message-author">- Para acalmar seu fogo interior 🔥</p>
+<button id="newMessageBtn">Nova mensagem</button>
 </div>
 </div>
 
@@ -143,10 +163,15 @@ function getRandomMessage() {
     return supportMessages[Math.floor(Math.random() * supportMessages.length)];
 }
 
-window.addEventListener('load', () => {
+function showNewMessage() {
     const messageElement = document.getElementById('supportMessage');
-    setTimeout(() => { messageElement.textContent = getRandomMessage(); }, 1500);
-});
+    messageElement.textContent = "Carregando nova mensagem...";
+    setTimeout(() => {
+        messageElement.textContent = getRandomMessage();
+    }, 1500);
+}
+
+document.getElementById('newMessageBtn').addEventListener('click', showNewMessage);
 
 // Emojis flutuantes automáticos de raiva
 const emojis = ["😡","😠","🤬","😤"];
