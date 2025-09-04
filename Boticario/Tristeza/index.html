@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #2C3E50 0%, #34495E 30%, #5D6D7E 60%, #85929E 100%);
@@ -59,9 +60,7 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
 }
 
 .message-card::before {
-    content:'';
-    position:absolute;
-    top:-50%; left:-50%;
+    content:''; position:absolute; top:-50%; left:-50%;
     width:200%; height:200%;
     background: linear-gradient(45deg, transparent, rgba(93,109,126,0.2), transparent);
     animation: gentle-wave 6s infinite;
@@ -73,22 +72,26 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
     100% { transform: translateX(100%) translateY(100%) rotate(360deg); opacity:0.3; }
 }
 
-.message-text {
-    font-size:1.5rem;
-    color:#F8F9FA;
-    line-height:1.6;
-    margin-bottom:1rem;
-    position: relative;
-    z-index:2;
-    font-weight:400;
-}
+.message-text { font-size:1.5rem; color:#F8F9FA; line-height:1.6; margin-bottom:1rem; position: relative; z-index:2; font-weight:400; }
+.message-author { font-size:1rem; color:#AED6F1; font-weight:600; position: relative; z-index:2; }
 
-.message-author {
-    font-size:1rem;
-    color:#AED6F1;
-    font-weight:600;
-    position: relative;
-    z-index:2;
+#newMessageBtn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #5D6D7E, #85929E);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+#newMessageBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 @media (max-width:768px){
@@ -100,7 +103,7 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
 </head>
 <body>
 
-<!-- Emojis de tristeza flutuantes -->
+<!-- Emojis flutuantes -->
 <div class="sad-emoji" style="top:10%; left:5%; font-size:3rem;">😢</div>
 <div class="sad-emoji" style="top:15%; right:10%; font-size:2.5rem;">😭</div>
 <div class="sad-emoji" style="top:20%; left:15%; font-size:2.2rem;">😞</div>
@@ -109,16 +112,6 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
 <div class="sad-emoji" style="top:35%; right:25%; font-size:2.5rem;">😞</div>
 <div class="sad-emoji" style="top:40%; left:30%; font-size:2.2rem;">😢</div>
 <div class="sad-emoji" style="top:45%; right:30%; font-size:3rem;">😭</div>
-<div class="sad-emoji" style="top:50%; left:40%; font-size:2.5rem;">😞</div>
-<div class="sad-emoji" style="top:55%; right:35%; font-size:2rem;">😢</div>
-<div class="sad-emoji" style="top:60%; left:50%; font-size:3rem;">😭</div>
-<div class="sad-emoji" style="top:65%; right:40%; font-size:2.5rem;">😞</div>
-<div class="sad-emoji" style="top:70%; left:60%; font-size:2.2rem;">😢</div>
-<div class="sad-emoji" style="top:75%; right:50%; font-size:3rem;">😭</div>
-<div class="sad-emoji" style="top:80%; left:70%; font-size:2rem;">😞</div>
-<div class="sad-emoji" style="top:85%; right:60%; font-size:2.5rem;">😢</div>
-<div class="sad-emoji" style="top:90%; left:80%; font-size:2.2rem;">😭</div>
-<div class="sad-emoji" style="top:95%; right:70%; font-size:3rem;">😞</div>
 
 <div class="container">
 <header>
@@ -129,6 +122,7 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
 <div class="message-card">
     <p class="message-text" id="supportMessage">Carregando sua mensagem...</p>
     <p class="message-author">- Com carinho e compreensão 💙</p>
+    <button id="newMessageBtn">Nova mensagem</button>
 </div>
 </div>
 
@@ -176,6 +170,14 @@ function getUniqueMessage() {
     return supportMessages[randomIndex];
 }
 
+function showNewMessage() {
+    const messageElement = document.getElementById('supportMessage');
+    messageElement.textContent = "Carregando nova mensagem...";
+    setTimeout(() => {
+        messageElement.textContent = getUniqueMessage();
+    }, 1500);
+}
+
 window.addEventListener('load', () => {
     const messageElement = document.getElementById('supportMessage');
     messageElement.textContent = "Carregando sua mensagem...";
@@ -184,8 +186,7 @@ window.addEventListener('load', () => {
     }, 1500);
 });
 
-// Para resetar manualmente (somente para testes)
-// sessionStorage.removeItem("seenMessages");
+document.getElementById('newMessageBtn').addEventListener('click', showNewMessage);
 </script>
 
 </body>
