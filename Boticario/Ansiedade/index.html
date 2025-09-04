@@ -88,6 +88,7 @@ h1 {
     height: 200%;
     background: linear-gradient(45deg, transparent, rgba(142, 36, 170, 0.3), transparent);
     animation: rapid-pulse 2s infinite;
+    pointer-events: none; /* Permite clicar no botão */
 }
 
 @keyframes rapid-pulse {
@@ -100,6 +101,26 @@ h1 {
 
 .message-text { font-size: 1.5rem; color: #F8F9FA; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
 .message-author { font-size: 1rem; color: #E1BEE7; font-weight: 600; position: relative; z-index: 2; }
+
+.generate-btn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #AB47BC, #8E24AA);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 2;
+    position: relative;
+}
+.generate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
 
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
@@ -119,6 +140,7 @@ h1 {
     <div class="message-card">
         <p class="message-text" id="supportMessage">Carregando sua mensagem...</p>
         <p class="message-author">- Para acalmar sua mente 💜</p>
+        <button class="generate-btn" id="newMessageBtn">Nova mensagem</button>
     </div>
 </div>
 
@@ -132,13 +154,13 @@ const supportMessages = [
     "Você não precisa controlar tudo. Está tudo bem deixar algumas coisas fluírem. 🌬️",
     "É normal sentir ansiedade. Cuide de você com carinho. 💛",
     "Este sentimento é desconfortável, mas não é perigoso. Você está seguro. 🛡️",
-   "Permita-se pausar e respirar. Cada sentimento importa. 🌱",
+    "Permita-se pausar e respirar. Cada sentimento importa. 🌱",
     "A ansiedade é como uma onda - intensa, mas sempre passa. Você pode surfar nela. 🏄‍♂️",
     "Você é mais forte que seus pensamentos ansiosos. Eles não definem você. 💜",
     "A ansiedade faz parte da vida. Lembre-se: não está sozinho(a). 🤝",
     "Está tudo bem não estar no controle de tudo. Você não precisa ser perfeito. 🎈",
     "Pequenos cuidados podem trazer alívio. Comece por você. 💛",
-   "Reconheça seus sentimentos sem pressa. Cada instante conta. 🌼",
+    "Reconheça seus sentimentos sem pressa. Cada instante conta. 🌼",
     "Você não precisa resolver tudo hoje. Um passo de cada vez é suficiente. 👣",
     "A ansiedade é um visitante, não um morador. Ela vai embora. 🕊️",
     "A ansiedade não define você. Sua força está em seguir adiante. 🌊",
@@ -151,18 +173,24 @@ function getRandomMessage() {
     return supportMessages[randomIndex];
 }
 
-// Mostrar mensagem aleatória com delay
-window.addEventListener('load', () => {
+// Função para exibir mensagem com efeito "carregando"
+function showMessage() {
     const messageElement = document.getElementById('supportMessage');
+    messageElement.textContent = "Carregando sua mensagem...";
     setTimeout(() => {
         messageElement.textContent = getRandomMessage();
-    }, 1500); // 1.5 segundos de "carregando"
-});
+    }, 1500);
+}
 
-// Geração de emojis flutuantes automaticamente
+// Mostrar uma mensagem aleatória ao carregar a página
+window.addEventListener('load', showMessage);
+
+// Botão para gerar nova mensagem
+document.getElementById('newMessageBtn').addEventListener('click', showMessage);
+
+// Emojis flutuantes
 const emojis = ["😰","😨","😟","😥","😓","😧","😬","😱","🌀","😖"];
 const body = document.body;
-
 for(let i=0;i<35;i++){
     const div = document.createElement("div");
     div.classList.add("anxious-emoji");
@@ -170,7 +198,7 @@ for(let i=0;i<35;i++){
     div.textContent = emoji;
     div.style.top = Math.random()*90 + "%";
     div.style.left = Math.random()*90 + "%";
-    div.style.fontSize = (Math.random()*2+1.5) + "rem"; // 1.5rem a 3.5rem
+    div.style.fontSize = (Math.random()*2+1.5) + "rem";
     div.style.animationDelay = Math.random()*3 + "s";
     body.appendChild(div);
 }
