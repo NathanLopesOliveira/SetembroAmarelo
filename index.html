@@ -69,10 +69,8 @@
         <div class="emotion-card bg-yellow-50/95 rounded-3xl p-8 text-center shadow-lg border-4 border-yellow-300">
             <div class="text-6xl mb-4">😊</div>
             <h3 class="text-2xl font-bold text-amber-900 mb-3">ALEGRIA</h3>
-            <div class="w-16 h-16 bg-yellow-400 rounded-full mx-auto shadow-md mb-4"></div>
             <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-yellow-500 rounded-lg mx-auto flex items-center justify-center">
-                <img id="qr-alegria" src="" alt="QR Code Alegria" class="w-full h-full object-contain rounded-lg" style="display: none;">
-                <div class="text-sm text-yellow-700 font-medium">QR Code</div>
+                <img src="Boticario/QRCODES/Alegria.png" alt="QR Code Alegria" class="w-full h-full object-contain rounded-lg">
             </div>
         </div>
 
@@ -80,10 +78,8 @@
         <div class="emotion-card bg-blue-50/95 rounded-3xl p-8 text-center shadow-lg border-4 border-blue-300">
             <div class="text-6xl mb-4">😢</div>
             <h3 class="text-2xl font-bold text-blue-700 mb-3">TRISTEZA</h3>
-            <div class="w-16 h-16 bg-blue-400 rounded-full mx-auto shadow-md mb-4"></div>
             <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-blue-500 rounded-lg mx-auto flex items-center justify-center">
-                <img id="qr-tristeza" src="" alt="QR Code Tristeza" class="w-full h-full object-contain rounded-lg" style="display: none;">
-                <div class="text-sm text-blue-700 font-medium">QR Code</div>
+                <img src="Boticario/QRCODES/Tristeza.png" alt="QR Code Tristeza" class="w-full h-full object-contain rounded-lg">
             </div>
         </div>
 
@@ -91,10 +87,8 @@
         <div class="emotion-card bg-orange-50/95 rounded-3xl p-8 text-center shadow-lg border-4 border-orange-300">
             <div class="text-6xl mb-4">😰</div>
             <h3 class="text-2xl font-bold text-orange-700 mb-3">ANSIEDADE</h3>
-            <div class="w-16 h-16 bg-orange-400 rounded-full mx-auto shadow-md mb-4"></div>
             <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-orange-500 rounded-lg mx-auto flex items-center justify-center">
-                <img id="qr-ansiedade" src="" alt="QR Code Ansiedade" class="w-full h-full object-contain rounded-lg" style="display: none;">
-                <div class="text-sm text-orange-700 font-medium">QR Code</div>
+                <img src="Boticario/QRCODES/Ansiedade.png" alt="QR Code Ansiedade" class="w-full h-full object-contain rounded-lg">
             </div>
         </div>
 
@@ -102,10 +96,8 @@
         <div class="emotion-card bg-red-50/95 rounded-3xl p-8 text-center shadow-lg border-4 border-red-300">
             <div class="text-6xl mb-4">😡</div>
             <h3 class="text-2xl font-bold text-red-700 mb-3">RAIVA</h3>
-            <div class="w-16 h-16 bg-red-400 rounded-full mx-auto shadow-md mb-4"></div>
             <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-red-500 rounded-lg mx-auto flex items-center justify-center">
-                <img id="qr-raiva" src="" alt="QR Code Raiva" class="w-full h-full object-contain rounded-lg" style="display: none;">
-                <div class="text-sm text-red-700 font-medium">QR Code</div>
+                <img src="Boticario/QRCODES/Raiva.png" alt="QR Code Raiva" class="w-full h-full object-contain rounded-lg">
             </div>
         </div>
 
@@ -113,10 +105,8 @@
         <div class="emotion-card bg-purple-50/95 rounded-3xl p-8 text-center shadow-lg border-4 border-purple-300">
             <div class="text-6xl mb-4">😨</div>
             <h3 class="text-2xl font-bold text-purple-700 mb-3">MEDO</h3>
-            <div class="w-16 h-16 bg-purple-400 rounded-full mx-auto shadow-md mb-4"></div>
             <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-purple-500 rounded-lg mx-auto flex items-center justify-center">
-                <img id="qr-medo" src="" alt="QR Code Medo" class="w-full h-full object-contain rounded-lg" style="display: none;">
-                <div class="text-sm text-purple-700 font-medium">QR Code</div>
+                <img src="Boticario/QRCODES/Medo.png" alt="QR Code Medo" class="w-full h-full object-contain rounded-lg">
             </div>
         </div>
     </div>
@@ -130,29 +120,6 @@
             CVV: 188 | Ligue a qualquer hora, todos os dias
         </p>
     </div>
-
-    <script>
-        // URLs prontas para QR codes com mensagens
-        const qrCodes = {
-            'qr-alegria': 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=💛%20Mensagem%20de%20alegria:%20Sorria,%20você%20é%20importante!',
-            'qr-tristeza': 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=💙%20Mensagem%20de%20tristeza:%20Está%20tudo%20bem%20sentir-se%20triste.%20Respire%20fundo.',
-            'qr-ansiedade': 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=🧡%20Mensagem%20de%20ansiedade:%20Inspire%204s,%20segure%204s,%20expire%204s.%20Repita.',
-            'qr-raiva': 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=❤️%20Mensagem%20de%20raiva:%20Respire%20fundo,%20conte%20até%2010,%20libere%20com%20calma.',
-            'qr-medo': 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=💜%20Mensagem%20de%20medo:%20Você%20é%20mais%20forte%20do%20que%20imagina.'
-        };
-
-        function loadQRCodes() {
-            Object.keys(qrCodes).forEach(id => {
-                const img = document.getElementById(id);
-                if(qrCodes[id] && qrCodes[id] !== '') {
-                    img.src = qrCodes[id];
-                    img.style.display = 'block';
-                    img.nextElementSibling.style.display = 'none';
-                }
-            });
-        }
-
-        window.addEventListener('load', loadQRCodes);
-    </script>
 </body>
 </html>
+
