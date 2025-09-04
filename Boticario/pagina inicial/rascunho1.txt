@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setembro Amarelo - Tela Inicial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 50%, #F59E0B 100%);
+        }
+        
+        .emotion-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .emotion-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center justify-center p-8">
+    <!-- Header -->
+    <div class="text-center mb-12 floating">
+        <h1 class="text-6xl font-bold text-amber-900 mb-4">
+            💛 SETEMBRO AMARELO 💛
+        </h1>
+        <p class="text-2xl text-amber-800 font-medium">
+            Mês de Prevenção ao Suicídio - Vamos Falar Sobre Sentimentos
+        </p>
+        <div class="w-32 h-1 bg-amber-600 mx-auto mt-6 rounded-full"></div>
+        <p class="text-3xl text-amber-900 font-semibold mt-8 mb-3">
+            O que você está sentindo hoje?
+        </p>
+        <p class="text-xl text-amber-800 font-medium">
+            Escaneie e receba uma mensagem
+        </p>
+    </div>
+
+    <!-- Emotions Grid -->
+    <div class="grid grid-cols-5 gap-8 mb-16 max-w-6xl">
+        <!-- Alegria -->
+        <div class="emotion-card bg-white/90 rounded-3xl p-8 text-center shadow-lg border-4 border-yellow-300">
+            <div class="text-6xl mb-4">😊</div>
+            <h3 class="text-2xl font-bold text-amber-900 mb-3">ALEGRIA</h3>
+            <div class="w-16 h-16 bg-yellow-400 rounded-full mx-auto shadow-md mb-4"></div>
+            <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-yellow-500 rounded-lg mx-auto flex items-center justify-center">
+                <img id="qr-alegria" src="" alt="QR Code Alegria" class="w-full h-full object-contain rounded-lg" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="text-sm text-yellow-700 font-medium">QR Code</div>
+            </div>
+        </div>
+
+        <!-- Tristeza -->
+        <div class="emotion-card bg-white/90 rounded-3xl p-8 text-center shadow-lg border-4 border-blue-300">
+            <div class="text-6xl mb-4">😢</div>
+            <h3 class="text-2xl font-bold text-blue-700 mb-3">TRISTEZA</h3>
+            <div class="w-16 h-16 bg-blue-400 rounded-full mx-auto shadow-md mb-4"></div>
+            <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-blue-500 rounded-lg mx-auto flex items-center justify-center">
+                <img id="qr-tristeza" src="" alt="QR Code Tristeza" class="w-full h-full object-contain rounded-lg" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="text-sm text-blue-700 font-medium">QR Code</div>
+            </div>
+        </div>
+
+        <!-- Ansiedade -->
+        <div class="emotion-card bg-white/90 rounded-3xl p-8 text-center shadow-lg border-4 border-orange-300">
+            <div class="text-6xl mb-4">😰</div>
+            <h3 class="text-2xl font-bold text-orange-700 mb-3">ANSIEDADE</h3>
+            <div class="w-16 h-16 bg-orange-400 rounded-full mx-auto shadow-md mb-4"></div>
+            <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-orange-500 rounded-lg mx-auto flex items-center justify-center">
+                <img id="qr-ansiedade" src="" alt="QR Code Ansiedade" class="w-full h-full object-contain rounded-lg" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="text-sm text-orange-700 font-medium">QR Code</div>
+            </div>
+        </div>
+
+        <!-- Raiva -->
+        <div class="emotion-card bg-white/90 rounded-3xl p-8 text-center shadow-lg border-4 border-red-300">
+            <div class="text-6xl mb-4">😡</div>
+            <h3 class="text-2xl font-bold text-red-700 mb-3">RAIVA</h3>
+            <div class="w-16 h-16 bg-red-400 rounded-full mx-auto shadow-md mb-4"></div>
+            <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-red-500 rounded-lg mx-auto flex items-center justify-center">
+                <img id="qr-raiva" src="" alt="QR Code Raiva" class="w-full h-full object-contain rounded-lg" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="text-sm text-red-700 font-medium">QR Code</div>
+            </div>
+        </div>
+
+        <!-- Medo -->
+        <div class="emotion-card bg-white/90 rounded-3xl p-8 text-center shadow-lg border-4 border-purple-300">
+            <div class="text-6xl mb-4">😨</div>
+            <h3 class="text-2xl font-bold text-purple-700 mb-3">MEDO</h3>
+            <div class="w-16 h-16 bg-purple-400 rounded-full mx-auto shadow-md mb-4"></div>
+            <div class="w-28 h-28 bg-gray-100 border-2 border-dashed border-purple-500 rounded-lg mx-auto flex items-center justify-center">
+                <img id="qr-medo" src="" alt="QR Code Medo" class="w-full h-full object-contain rounded-lg" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="text-sm text-purple-700 font-medium">QR Code</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer Message -->
+    <div class="mt-12 text-center pulse-animation">
+        <p class="text-2xl text-amber-900 font-semibold">
+            💛 Você não está sozinho(a) - Busque ajuda sempre que precisar 💛
+        </p>
+        <p class="text-lg text-amber-800 mt-2">
+            CVV: 188 | Ligue a qualquer hora, todos os dias
+        </p>
+    </div>
+
+    <script>
+        // Função para carregar QR codes - substitua as URLs pelos seus QR codes
+        function loadQRCodes() {
+            // Substitua essas URLs pelas URLs dos seus QR codes
+            const qrCodes = {
+                'qr-alegria': '', // Cole aqui a URL do QR code da alegria
+                'qr-tristeza': '', // Cole aqui a URL do QR code da tristeza
+                'qr-ansiedade': '', // Cole aqui a URL do QR code da ansiedade
+                'qr-raiva': '', // Cole aqui a URL do QR code da raiva
+                'qr-medo': '' // Cole aqui a URL do QR code do medo
+            };
+
+            // Carrega cada QR code
+            Object.keys(qrCodes).forEach(id => {
+                const img = document.getElementById(id);
+                if (qrCodes[id] && qrCodes[id] !== '') {
+                    img.src = qrCodes[id];
+                    img.style.display = 'block';
+                    img.nextElementSibling.style.display = 'none';
+                }
+            });
+        }
+
+        // Carrega os QR codes quando a página carregar
+        window.addEventListener('load', loadQRCodes);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979797f030abf202',t:'MTc1NjkyNzExMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

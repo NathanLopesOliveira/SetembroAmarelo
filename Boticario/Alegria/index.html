@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alegria - Sorria e Aproveite</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 30%, #FFB74D 60%, #FF8A65 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    position: relative;
+}
+
+.happy-emoji {
+    position: absolute;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    25% { transform: translateY(-10px) rotate(5deg) scale(1.05); }
+    50% { transform: translateY(5px) rotate(-5deg) scale(0.95); }
+    75% { transform: translateY(-5px) rotate(3deg) scale(1.02); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+.container {
+    max-width:1200px;
+    margin:0 auto;
+    padding:2rem;
+    position: relative;
+    z-index:10;
+}
+
+header {
+    text-align:center;
+    margin-bottom:3rem;
+    background: rgba(255,255,255,0.85);
+    padding:2rem;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border:3px solid #FFD54F;
+}
+
+h1 { font-size:3rem; color:#FF6F00; margin-bottom:1rem; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.2); }
+
+.subtitle { font-size:1.2rem; color:#FF8A65; margin-bottom:2rem; }
+
+.message-card {
+    background: rgba(255,255,255,0.9);
+    padding:3rem;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    text-align:center;
+    margin:2rem 0;
+    backdrop-filter: blur(10px);
+    border:3px solid #FFB74D;
+    position: relative;
+    overflow:hidden;
+}
+
+.message-card::before {
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background: linear-gradient(45deg, transparent, rgba(255,183,77,0.3), transparent);
+    animation: sun-wave 6s infinite;
+}
+
+@keyframes sun-wave {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg) scale(0.8); opacity:0.2; }
+    25% { transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(1.2); opacity:0.4; }
+    50% { transform: translateX(0%) translateY(0%) rotate(180deg) scale(0.9); opacity:0.6; }
+    75% { transform: translateX(50%) translateY(50%) rotate(270deg) scale(1.1); opacity:0.3; }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg) scale(0.8); opacity:0.2; }
+}
+
+.message-text { font-size:1.5rem; color:#FF6F00; line-height:1.6; margin-bottom:1rem; position: relative; z-index:2; font-weight:400; }
+.message-author { font-size:1rem; color:#FF8A65; font-weight:600; position: relative; z-index:2; }
+
+@media (max-width:768px){
+    h1{font-size:2rem;}
+    .message-text{font-size:1.2rem;}
+    .container{padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>
+<h1>😄 ALEGRIA 😄</h1>
+<p class="subtitle">Sorria e aproveite cada momento!</p>
+</header>
+
+<div class="message-card">
+<p class="message-text" id="supportMessage">Carregando mensagem motivacional...</p>
+<p class="message-author">- Para iluminar seu dia 🌞✨</p>
+</div>
+</div>
+
+<script>
+// Mensagens de alegria
+const supportMessages = [
+    "Sorria, você está fazendo o seu melhor! 😃🌈",
+    "A felicidade é contagiante, espalhe-a! 😄💛",
+    "Pequenos momentos podem trazer grandes alegrias! 🌸😊",
+    "Respire fundo e aproveite a vida. Você merece! 🌞💖",
+    "O mundo fica mais leve quando você sorri! 😁✨",
+    "Alegria é a energia que transforma tudo ao redor! 🎉😄",
+    "Cada dia é uma nova oportunidade de felicidade! 🌟😃",
+    "Celebre cada vitória, mesmo que pequena! 🏆😆",
+    "Sua alegria inspira quem está ao seu redor! 🌈😄",
+    "O sorriso é a chave que abre portas para momentos incríveis! 😁💛"
+];
+
+function getRandomMessage() {
+    return supportMessages[Math.floor(Math.random()*supportMessages.length)];
+}
+
+window.addEventListener('load', () => {
+    const messageElement = document.getElementById('supportMessage');
+    setTimeout(() => { messageElement.textContent = getRandomMessage(); }, 1500);
+});
+
+// Emojis flutuantes automáticos de alegria
+const emojis = ["😄","😃","😊","😁","😆"];
+for(let i=0;i<35;i++){
+    const div = document.createElement("div");
+    div.classList.add("happy-emoji");
+    div.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    div.style.top = Math.random()*90 + "%";
+    div.style.left = Math.random()*90 + "%";
+    div.style.fontSize = (Math.random()*2+1.5) + "rem";
+    div.style.animationDelay = Math.random()*4 + "s";
+    document.body.appendChild(div);
+}
+</script>
+</body>
+</html>

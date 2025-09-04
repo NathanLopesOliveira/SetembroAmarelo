@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raiva - Respire e Liberte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6B0F1A 0%, #B31217 30%, #E52D27 60%, #FF6B6B 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.angry-emoji {
+    position: absolute;
+    animation: shake 2.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0px) translateY(0px) scale(1) rotate(0deg); }
+    10% { transform: translateX(-3px) translateY(-2px) scale(0.95) rotate(-1deg); }
+    20% { transform: translateX(3px) translateY(2px) scale(1.05) rotate(1deg); }
+    30% { transform: translateX(-2px) translateY(-3px) scale(0.98) rotate(-0.5deg); }
+    40% { transform: translateX(2px) translateY(3px) scale(1.02) rotate(0.5deg); }
+    50% { transform: translateX(-4px) translateY(-1px) scale(0.96) rotate(-1.5deg); }
+    60% { transform: translateX(4px) translateY(1px) scale(1.04) rotate(1.5deg); }
+    70% { transform: translateX(-1px) translateY(-4px) scale(0.99) rotate(-0.8deg); }
+    80% { transform: translateX(1px) translateY(4px) scale(1.01) rotate(0.8deg); }
+    90% { transform: translateX(-2px) translateY(-1px) scale(0.97) rotate(-0.3deg); }
+    100% { transform: translateX(0px) translateY(0px) scale(1) rotate(0deg); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(107,15,26,0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    border: 3px solid #E52D27;
+}
+
+h1 { font-size: 3rem; color: #FFD1D1; margin-bottom: 1rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+.subtitle { font-size: 1.2rem; color: #FFE5E5; margin-bottom: 2rem; }
+
+.message-card {
+    background: rgba(107,15,26,0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    text-align: center;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    border: 3px solid #E52D27;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(229,45,39,0.3), transparent);
+    animation: angry-wave 4s infinite;
+}
+
+@keyframes angry-wave {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg) scale(0.8); opacity: 0.2; }
+    25% { transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(1.2); opacity: 0.4; }
+    50% { transform: translateX(0%) translateY(0%) rotate(180deg) scale(0.9); opacity: 0.6; }
+    75% { transform: translateX(50%) translateY(50%) rotate(270deg) scale(1.1); opacity: 0.3; }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg) scale(0.8); opacity: 0.2; }
+}
+
+.message-text { font-size: 1.5rem; color: #FFF5F5; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
+.message-author { font-size: 1rem; color: #FFD1D1; font-weight: 600; position: relative; z-index: 2; }
+
+@media (max-width:768px){
+    h1{font-size:2rem;}
+    .message-text{font-size:1.2rem;}
+    .container{padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>
+<h1>😡 RAIVA 😡</h1>
+<p class="subtitle">Respire e liberte sua energia</p>
+</header>
+
+<div class="message-card">
+<p class="message-text" id="supportMessage">Carregando mensagem de apoio...</p>
+<p class="message-author">- Para acalmar seu fogo interior 🔥</p>
+</div>
+</div>
+
+<script>
+const supportMessages = [
+    "É normal sentir raiva. Reconheça e respire profundamente. 😤💨",
+    "A raiva é energia. Transforme-a em ação positiva! 🔥💪",
+    "Respire fundo e deixe o sentimento passar. 🌬️🧘",
+    "Sua raiva não te define. Você controla suas ações. ✋😡",
+    "Liberte sua raiva de forma saudável. Escrever ou se exercitar ajuda! 📝🏋️‍♂️",
+    "Lembre-se: cada respiração é um passo para a calma. 🌿😌",
+    "Raiva intensa é sinal de algo importante. Observe e aprenda com ela. 👀⚡",
+    "Transforme raiva em motivação. Você é mais forte do que pensa! 💥💪",
+    "Ficar com raiva é humano. Escolha a forma de expressar que não machuca ninguém. ✨",
+    "A raiva é passageira. Você pode superar este momento. 🌈"
+];
+
+function getRandomMessage() {
+    return supportMessages[Math.floor(Math.random() * supportMessages.length)];
+}
+
+window.addEventListener('load', () => {
+    const messageElement = document.getElementById('supportMessage');
+    setTimeout(() => { messageElement.textContent = getRandomMessage(); }, 1500);
+});
+
+// Emojis flutuantes automáticos de raiva
+const emojis = ["😡","😠","🤬","😤"];
+for(let i=0;i<35;i++){
+    const div = document.createElement("div");
+    div.classList.add("angry-emoji");
+    div.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    div.style.top = Math.random()*90 + "%";
+    div.style.left = Math.random()*90 + "%";
+    div.style.fontSize = (Math.random()*2+1.5) + "rem";
+    div.style.animationDelay = Math.random()*2 + "s";
+    document.body.appendChild(div);
+}
+</script>
+</body>
+</html>

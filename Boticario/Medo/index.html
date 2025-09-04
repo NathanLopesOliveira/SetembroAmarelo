@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medo - Você É Mais Corajoso Do Que Pensa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0D1117 0%, #1C1C1C 30%, #2D1B69 60%, #4A148C 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.scared-emoji {
+    position: absolute;
+    animation: tremble 2.5s ease-in-out infinite;
+}
+
+@keyframes tremble {
+    0% { transform: translateX(0px) translateY(0px) scale(1) rotate(0deg); }
+    10% { transform: translateX(-3px) translateY(-2px) scale(0.95) rotate(-1deg); }
+    20% { transform: translateX(3px) translateY(2px) scale(1.05) rotate(1deg); }
+    30% { transform: translateX(-2px) translateY(-3px) scale(0.98) rotate(-0.5deg); }
+    40% { transform: translateX(2px) translateY(3px) scale(1.02) rotate(0.5deg); }
+    50% { transform: translateX(-4px) translateY(-1px) scale(0.96) rotate(-1.5deg); }
+    60% { transform: translateX(4px) translateY(1px) scale(1.04) rotate(1.5deg); }
+    70% { transform: translateX(-1px) translateY(-4px) scale(0.99) rotate(-0.8deg); }
+    80% { transform: translateX(1px) translateY(4px) scale(1.01) rotate(0.8deg); }
+    90% { transform: translateX(-2px) translateY(-1px) scale(0.97) rotate(-0.3deg); }
+    100% { transform: translateX(0px) translateY(0px) scale(1) rotate(0deg); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(13, 17, 23, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 3px solid #2D1B69;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #B19CD9;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #D1C4E9;
+    margin-bottom: 2rem;
+}
+
+.message-card {
+    background: rgba(13, 17, 23, 0.98);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    border: 3px solid #2D1B69;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(45, 27, 105, 0.3), transparent);
+    animation: shadow-dance 4s infinite;
+}
+
+@keyframes shadow-dance {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg) scale(0.8); opacity: 0.2; }
+    25% { transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(1.2); opacity: 0.4; }
+    50% { transform: translateX(0%) translateY(0%) rotate(180deg) scale(0.9); opacity: 0.6; }
+    75% { transform: translateX(50%) translateY(50%) rotate(270deg) scale(1.1); opacity: 0.3; }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg) scale(0.8); opacity: 0.2; }
+}
+
+.message-text { font-size: 1.5rem; color: #F8F9FA; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
+.message-author { font-size: 1rem; color: #B19CD9; font-weight: 600; position: relative; z-index: 2; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .message-text { font-size: 1.2rem; }
+    .container { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>😨 MEDO 😨</h1>
+        <p class="subtitle">Você é mais corajoso do que imagina</p>
+    </header>
+
+    <div class="message-card">
+        <p class="message-text" id="supportMessage">Carregando mensagem de apoio...</p>
+        <p class="message-author">- Para sua coragem interior 🌟</p>
+    </div>
+</div>
+
+<script>
+// Mensagens motivacionais com emojis
+const supportMessages = [
+    "Coragem não é a ausência do medo, é agir mesmo tendo medo. 💪😨",
+    "Você já enfrentou seus medos antes e sobreviveu. Você pode fazer isso de novo. 🌟",
+    "O medo é um sentimento, não um fato. Você é mais forte do que ele. 🛡️",
+    "Respire fundo. O medo perde poder quando você o enfrenta com calma. 😌",
+    "Cada pequeno passo corajoso te torna mais forte que seus medos. 👣🔥",
+    "Você não precisa ser destemido, apenas precisa ser corajoso. 💜",
+    "O medo é normal. Heróis também sentem medo, mas agem mesmo assim. 🦸‍♂️",
+    "Seus medos são menores do que sua capacidade de superá-los. 🌈",
+    "Lembre-se: você já superou 100% dos seus medos até agora. 💪✨",
+    "O medo tenta te proteger, mas às vezes te limita. Você pode escolher crescer. 🕊️",
+    "Você é mais corajoso do que acredita, mais forte do que parece. 💎",
+    "Enfrente seus medos um de cada vez. Você não precisa vencer todos hoje. 🐾",
+    "O medo é temporário, mas o arrependimento de não tentar pode durar para sempre. ⏳",
+    "Sua zona de conforto é segura, mas é onde os sonhos vão morrer. Seja corajoso. 🌠",
+    "O medo é como uma sombra - parece maior quando você foge dele. 🌑",
+    "Você tem dentro de si tudo que precisa para enfrentar qualquer medo. 🏹",
+    "Cada vez que você enfrenta um medo, você se torna um pouco mais livre. 🕊️",
+    "O medo sussurra 'você não consegue'. A coragem grita 'vamos tentar!' 🔊",
+    "Seus medos não definem seus limites. Sua coragem define suas possibilidades. 🚀",
+    "Lembre-se: do outro lado do medo está tudo que você sempre quis. 🌈"
+];
+
+// Mostrar mensagem aleatória com delay
+function getRandomMessage() {
+    return supportMessages[Math.floor(Math.random() * supportMessages.length)];
+}
+
+window.addEventListener('load', () => {
+    const messageElement = document.getElementById('supportMessage');
+    setTimeout(() => {
+        messageElement.textContent = getRandomMessage();
+    }, 1500);
+});
+
+// Emojis flutuantes automáticos
+const emojis = ["😨","😱","😰","😧","😖","😦"];
+for(let i=0;i<35;i++){
+    const div = document.createElement("div");
+    div.classList.add("scared-emoji");
+    div.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    div.style.top = Math.random()*90 + "%";
+    div.style.left = Math.random()*90 + "%";
+    div.style.fontSize = (Math.random()*2+1.5) + "rem";
+    div.style.animationDelay = Math.random()*2 + "s";
+    document.body.appendChild(div);
+}
+</script>
+</body>
+</html>
