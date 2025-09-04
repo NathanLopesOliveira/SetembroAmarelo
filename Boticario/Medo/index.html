@@ -104,6 +104,25 @@ h1 {
 .message-text { font-size: 1.5rem; color: #F8F9FA; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
 .message-author { font-size: 1rem; color: #B19CD9; font-weight: 600; position: relative; z-index: 2; }
 
+#newMessageBtn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #7E57C2, #B39DDB);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+#newMessageBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     .message-text { font-size: 1.2rem; }
@@ -122,11 +141,11 @@ h1 {
     <div class="message-card">
         <p class="message-text" id="supportMessage">Carregando mensagem de apoio...</p>
         <p class="message-author">- Para sua coragem interior 🌟</p>
+        <button id="newMessageBtn">Nova mensagem</button>
     </div>
 </div>
 
 <script>
-// Mensagens motivacionais com emojis
 const supportMessages = [
     "Coragem não é a ausência do medo, é agir mesmo tendo medo. 💪😨",
     "Você já enfrentou seus medos antes e sobreviveu. Você pode fazer isso de novo. 🌟",
@@ -150,17 +169,19 @@ const supportMessages = [
     "Lembre-se: do outro lado do medo está tudo que você sempre quis. 🌈"
 ];
 
-// Mostrar mensagem aleatória com delay
 function getRandomMessage() {
     return supportMessages[Math.floor(Math.random() * supportMessages.length)];
 }
 
-window.addEventListener('load', () => {
+function showNewMessage() {
     const messageElement = document.getElementById('supportMessage');
+    messageElement.textContent = "Carregando nova mensagem...";
     setTimeout(() => {
         messageElement.textContent = getRandomMessage();
     }, 1500);
-});
+}
+
+document.getElementById('newMessageBtn').addEventListener('click', showNewMessage);
 
 // Emojis flutuantes automáticos
 const emojis = ["😨","😱","😰","😧","😖","😦"];
