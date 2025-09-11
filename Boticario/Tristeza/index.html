@@ -75,7 +75,7 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
 .message-text { font-size:1.5rem; color:#F8F9FA; line-height:1.6; margin-bottom:1rem; position: relative; z-index:2; font-weight:400; }
 .message-author { font-size:1rem; color:#AED6F1; font-weight:600; position: relative; z-index:2; }
 
-#newMessageBtn {
+#newMessageBtn, .quiz-btn {
     display: inline-block;
     padding: 0.8rem 2rem;
     margin-top: 1rem;
@@ -88,8 +88,9 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
+    text-decoration: none;
 }
-#newMessageBtn:hover {
+#newMessageBtn:hover, .quiz-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
@@ -123,6 +124,8 @@ h1 { font-size:3rem; color:#AED6F1; margin-bottom:1rem; font-weight:700; text-sh
     <p class="message-text" id="supportMessage">Carregando sua mensagem...</p>
     <p class="message-author">- Com carinho e compreensão 💙</p>
     <button id="newMessageBtn">Nova mensagem</button>
+    <br>
+    <a href="https://nathanlopesoliveira.github.io/SetembroAmarelo/Boticario/Quiz/" class="quiz-btn">Responder Quiz</a>
 </div>
 </div>
 
