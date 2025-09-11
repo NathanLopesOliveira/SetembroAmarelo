@@ -129,11 +129,46 @@ h1 { font-size:3rem; color:#FF6F00; margin-bottom:1rem; font-weight:700; text-sh
 </header>
 
 <div class="message-card">
-<p class="message-text" id="supportMessage">Carregando mensagem motivacional...</p>
-<p class="message-author">- Para iluminar seu dia 🌞✨</p>
-<button id="newMessageBtn">Nova Mensagem</button>
+  <p class="message-text" id="supportMessage">Carregando mensagem motivacional...</p>
+  <p class="message-author">- Para iluminar seu dia 🌞✨</p>
+
+  <!-- Botão do quiz -->
+<div class="text-center mt-6">
+  <a href="https://nathanlopesoliveira.github.io/SetembroAmarelo/Boticario/Quiz/" class="quiz-button">
+    ✨ Responder Quiz ✨
+  </a>
 </div>
-</div>
+
+<style>
+.quiz-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD54F, #FFB300);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.9rem 2.5rem;
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(255, 179, 0, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: quizPulse 2s infinite;
+}
+
+.quiz-button:hover {
+  background: linear-gradient(135deg, #FFB300, #FF8A00);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255, 140, 0, 0.5);
+}
+
+@keyframes quizPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+</style>
+
+
 
 <script>
 // Mensagens de alegria
