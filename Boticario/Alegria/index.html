@@ -11,216 +11,169 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 30%, #FFB74D 60%, #FF8A65 100%);
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 30%, #FFEB3B 60%, #FFF176 100%);
     min-height:100vh;
     overflow-x:hidden;
-    position: relative;
+    position:relative;
 }
 
 .happy-emoji {
-    position: absolute;
-    animation: float 4s ease-in-out infinite;
+    position:absolute;
+    animation: bounce 3s ease-in-out infinite;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px) rotate(0deg) scale(1); }
-    25% { transform: translateY(-10px) rotate(5deg) scale(1.05); }
-    50% { transform: translateY(5px) rotate(-5deg) scale(0.95); }
-    75% { transform: translateY(-5px) rotate(3deg) scale(1.02); }
-    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+@keyframes bounce {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-5deg); }
 }
 
-.container {
-    max-width:1200px;
-    margin:0 auto;
-    padding:2rem;
-    position: relative;
-    z-index:10;
-}
+.container { max-width:1200px; margin:0 auto; padding:2rem; position:relative; z-index:10; }
 
 header {
     text-align:center;
     margin-bottom:3rem;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,235,59,0.9);
     padding:2rem;
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
     backdrop-filter: blur(10px);
-    border:3px solid #FFD54F;
+    border:3px solid #FFC107;
 }
 
-h1 { font-size:3rem; color:#FF6F00; margin-bottom:1rem; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.2); }
-
-.subtitle { font-size:1.2rem; color:#FF8A65; margin-bottom:2rem; }
+h1 { font-size:3rem; color:#FF5722; margin-bottom:1rem; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.3); }
+.subtitle { font-size:1.2rem; color:#795548; margin-bottom:2rem; }
 
 .message-card {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,235,59,0.95);
     padding:3rem;
     border-radius:20px;
     box-shadow:0 15px 35px rgba(0,0,0,0.3);
     text-align:center;
     margin:2rem 0;
     backdrop-filter: blur(10px);
-    border:3px solid #FFB74D;
+    border:3px solid #FFC107;
     position: relative;
     overflow:hidden;
 }
 
 .message-card::before {
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background: linear-gradient(45deg, transparent, rgba(255,183,77,0.3), transparent);
-    animation: sun-wave 6s infinite;
+    content:''; position:absolute; top:-50%; left:-50%;
+    width:200%; height:200%;
+    background: linear-gradient(45deg, transparent, rgba(255,193,7,0.2), transparent);
+    animation: gentle-wave 6s infinite;
 }
 
-@keyframes sun-wave {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg) scale(0.8); opacity:0.2; }
-    25% { transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(1.2); opacity:0.4; }
-    50% { transform: translateX(0%) translateY(0%) rotate(180deg) scale(0.9); opacity:0.6; }
-    75% { transform: translateX(50%) translateY(50%) rotate(270deg) scale(1.1); opacity:0.3; }
-    100% { transform: translateX(100%) translateY(100%) rotate(360deg) scale(0.8); opacity:0.2; }
+@keyframes gentle-wave {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); opacity:0.3; }
+    50% { transform: translateX(0%) translateY(0%) rotate(180deg); opacity:0.6; }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg); opacity:0.3; }
 }
 
-.message-text { font-size:1.5rem; color:#FF6F00; line-height:1.6; margin-bottom:1rem; position: relative; z-index:2; font-weight:400; }
-.message-author { font-size:1rem; color:#FF8A65; font-weight:600; position: relative; z-index:2; }
+.message-text { font-size:1.5rem; color:#4E342E; line-height:1.6; margin-bottom:1rem; position: relative; z-index:2; font-weight:400; }
+.message-author { font-size:1rem; color:#FF5722; font-weight:600; position: relative; z-index:2; }
 
-#newMessageBtn {
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.8rem;
-    background: linear-gradient(45deg, #FFD54F, #FFB74D);
-    color: white;
-    font-weight: 600;
+#newMessageBtn, .quiz-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
     font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #FF9800, #FFC107);
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
-    animation: pulseBtn 2s infinite;
+    text-decoration: none;
 }
-#newMessageBtn:hover {
+#newMessageBtn:hover, .quiz-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    background: linear-gradient(45deg, #FFB74D, #FF8A65);
-}
-
-@keyframes pulseBtn {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 @media (max-width:768px){
-    h1{font-size:2rem;}
-    .message-text{font-size:1.2rem;}
-    .container{padding:1rem;}
+    h1 { font-size:2rem; }
+    .message-text { font-size:1.2rem; }
+    .container { padding:1rem; }
 }
 </style>
 </head>
 <body>
 
+<!-- Emojis flutuantes -->
+<div class="happy-emoji" style="top:10%; left:5%; font-size:3rem;">😄</div>
+<div class="happy-emoji" style="top:15%; right:10%; font-size:2.5rem;">😁</div>
+<div class="happy-emoji" style="top:20%; left:15%; font-size:2.2rem;">😆</div>
+<div class="happy-emoji" style="top:25%; right:15%; font-size:3rem;">😃</div>
+
 <div class="container">
 <header>
-<h1>😄 ALEGRIA 😄</h1>
-<p class="subtitle">Sorria e aproveite cada momento!</p>
+    <h1>😄 ALEGRIA 😄</h1>
+    <p class="subtitle">Sorria e aproveite cada momento!</p>
 </header>
 
 <div class="message-card">
-  <p class="message-text" id="supportMessage">Carregando mensagem motivacional...</p>
-  <p class="message-author">- Para iluminar seu dia 🌞✨</p>
-
-  <!-- Botão do quiz -->
-<div class="text-center mt-6">
-  <a href="https://nathanlopesoliveira.github.io/SetembroAmarelo/Boticario/Quiz/" class="quiz-button">
-    ✨ Responder Quiz ✨
-  </a>
+    <p class="message-text" id="supportMessage">Carregando sua mensagem...</p>
+    <p class="message-author">- Espalhe felicidade ao seu redor 🌟</p>
+    <button id="newMessageBtn">Nova mensagem</button>
+    <br>
+    <a href="https://seuquiz.com" class="quiz-btn">Responder Quiz</a>
+</div>
 </div>
 
-<style>
-.quiz-button {
-  display: inline-block;
-  background: linear-gradient(135deg, #FFD54F, #FFB300);
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 0.9rem 2.5rem;
-  border-radius: 14px;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(255, 179, 0, 0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  animation: quizPulse 2s infinite;
-}
-
-.quiz-button:hover {
-  background: linear-gradient(135deg, #FFB300, #FF8A00);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 28px rgba(255, 140, 0, 0.5);
-}
-
-@keyframes quizPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-</style>
-
-
-
 <script>
-// Mensagens de alegria
 const supportMessages = [
-    "Sorria, você está fazendo o seu melhor! 😃🌈",
-    "A felicidade é contagiante, espalhe-a! 😄💛",
-    "Pequenos momentos podem trazer grandes alegrias! 🌸😊",
-    "Respire fundo e aproveite a vida. Você merece! 🌞💖",
-    "O mundo fica mais leve quando você sorri! 😁✨",
-    "Alegria é a energia que transforma tudo ao redor! 🎉😄",
-    "Cada dia é uma nova oportunidade de felicidade! 🌟😃",
-    "Celebre cada vitória, mesmo que pequena! 🏆😆",
-    "Sua alegria inspira quem está ao seu redor! 🌈😄",
-    "O sorriso é a chave que abre portas para momentos incríveis! 😁💛",
-    "🌞Sorria! Pequenos momentos de felicidade fazem grandes diferenças.",
-    "🌸A alegria floresce quando cultivamos gratidão em nosso coração.",
-    "😄Ria sem motivo. Às vezes, a felicidade está nas coisas mais simples.",
-    "🌈Cada amanhecer é uma nova chance de ser feliz.",
-    "🌟Compartilhe sua alegria, e ela se multiplicará.",
-    "💛Um sorriso sincero pode iluminar até o dia mais nublado."
+    "Sorrir muda seu dia 😊. Experimente agora!",
+    "A alegria é contagiante. Compartilhe seu sorriso 😄!",
+    "Cada momento feliz conta 🌞. Aproveite!",
+    "Foque no positivo e veja sua energia aumentar 🌟",
+    "Ria de si mesmo de vez em quando 😂. Libere a tensão!",
+    "A felicidade está nas pequenas coisas 💛. Observe-as!",
+    "Espalhe bondade, e alegria retornará 💖",
+    "Celebrar pequenas vitórias traz grandes sorrisos 🏆",
+    "Aprecie o que você tem, e a alegria florescerá 🌸",
+    "Sinta gratidão hoje 🙏. A alegria acompanha a gratidão!"
 ];
 
-function getRandomMessage() {
-    return supportMessages[Math.floor(Math.random()*supportMessages.length)];
+function getUniqueMessage() {
+    let seen = JSON.parse(sessionStorage.getItem("seenMessages")) || [];
+    const unseenMessages = supportMessages.filter((_, index) => !seen.includes(index));
+
+    if (unseenMessages.length === 0) {
+        seen = [];
+        sessionStorage.setItem("seenMessages", JSON.stringify(seen));
+        return getUniqueMessage();
+    }
+
+    const randomIndex = supportMessages.indexOf(
+        unseenMessages[Math.floor(Math.random() * unseenMessages.length)]
+    );
+
+    seen.push(randomIndex);
+    sessionStorage.setItem("seenMessages", JSON.stringify(seen));
+
+    return supportMessages[randomIndex];
 }
 
-// Mostra mensagem inicial após carregar
+function showNewMessage() {
+    const messageElement = document.getElementById('supportMessage');
+    messageElement.textContent = "Carregando nova mensagem...";
+    setTimeout(() => {
+        messageElement.textContent = getUniqueMessage();
+    }, 1000);
+}
+
 window.addEventListener('load', () => {
     const messageElement = document.getElementById('supportMessage');
-    setTimeout(() => { messageElement.textContent = getRandomMessage(); }, 1500);
+    messageElement.textContent = "Carregando sua mensagem...";
+    setTimeout(() => {
+        messageElement.textContent = getUniqueMessage();
+    }, 1000);
 });
 
-// Emojis flutuantes automáticos de alegria
-const emojis = ["😄","😃","😊","😁","😆"];
-for(let i=0;i<35;i++){
-    const div = document.createElement("div");
-    div.classList.add("happy-emoji");
-    div.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-    div.style.top = Math.random()*90 + "%";
-    div.style.left = Math.random()*90 + "%";
-    div.style.fontSize = (Math.random()*2+1.5) + "rem";
-    div.style.animationDelay = Math.random()*4 + "s";
-    document.body.appendChild(div);
-}
-
-// Botão para gerar nova mensagem com "carregando"
-const btn = document.getElementById("newMessageBtn");
-btn.addEventListener("click", () => {
-    const messageElement = document.getElementById("supportMessage");
-    messageElement.textContent = "Carregando sua mensagem... ⏳";
-    setTimeout(() => { messageElement.textContent = getRandomMessage(); }, 1200);
-});
+document.getElementById('newMessageBtn').addEventListener('click', showNewMessage);
 </script>
+
 </body>
 </html>
