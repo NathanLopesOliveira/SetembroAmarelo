@@ -88,7 +88,7 @@ h1 {
     height: 200%;
     background: linear-gradient(45deg, transparent, rgba(142, 36, 170, 0.3), transparent);
     animation: rapid-pulse 2s infinite;
-    pointer-events: none; /* Permite clicar no botão */
+    pointer-events: none;
 }
 
 @keyframes rapid-pulse {
@@ -122,6 +122,35 @@ h1 {
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
+/* Botão Quiz */
+.quiz-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #8E24AA, #AB47BC);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.9rem 2.5rem;
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(171, 71, 188, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: quizPulse 2s infinite;
+  margin-top: 1.5rem;
+}
+
+.quiz-button:hover {
+  background: linear-gradient(135deg, #AB47BC, #BA68C8);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(142, 36, 170, 0.6);
+}
+
+@keyframes quizPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     .message-text { font-size: 1.2rem; }
@@ -141,6 +170,11 @@ h1 {
         <p class="message-text" id="supportMessage">Carregando sua mensagem...</p>
         <p class="message-author">- Para acalmar sua mente 💜</p>
         <button class="generate-btn" id="newMessageBtn">Nova mensagem</button>
+
+        <!-- Botão do Quiz -->
+        <div>
+          <a href="https://nathanlopesoliveira.github.io/SetembroAmarelo/Boticario/Quiz/" class="quiz-button">💜 Responder Quiz 💜</a>
+        </div>
     </div>
 </div>
 
@@ -173,7 +207,6 @@ function getRandomMessage() {
     return supportMessages[randomIndex];
 }
 
-// Função para exibir mensagem com efeito "carregando"
 function showMessage() {
     const messageElement = document.getElementById('supportMessage');
     messageElement.textContent = "Carregando sua mensagem...";
@@ -182,13 +215,9 @@ function showMessage() {
     }, 1500);
 }
 
-// Mostrar uma mensagem aleatória ao carregar a página
 window.addEventListener('load', showMessage);
-
-// Botão para gerar nova mensagem
 document.getElementById('newMessageBtn').addEventListener('click', showMessage);
 
-// Emojis flutuantes
 const emojis = ["😰","😨","😟","😥","😓","😧","😬","😱","🌀","😖"];
 const body = document.body;
 for(let i=0;i<35;i++){
