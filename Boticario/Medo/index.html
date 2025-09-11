@@ -104,21 +104,35 @@ h1 {
 .message-text { font-size: 1.5rem; color: #F8F9FA; line-height: 1.6; margin-bottom: 1rem; position: relative; z-index: 2; font-weight: 400; }
 .message-author { font-size: 1rem; color: #B19CD9; font-weight: 600; position: relative; z-index: 2; }
 
-#newMessageBtn {
+.btn {
     display: inline-block;
     padding: 0.8rem 2rem;
     margin-top: 1rem;
     font-size: 1rem;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, #7E57C2, #B39DDB);
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+#newMessageBtn {
+    background: linear-gradient(135deg, #7E57C2, #B39DDB);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 #newMessageBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+#quizBtn {
+    background: linear-gradient(135deg, #FFD54F, #FFB300);
+    margin-left: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+#quizBtn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
@@ -141,7 +155,8 @@ h1 {
     <div class="message-card">
         <p class="message-text" id="supportMessage">Carregando mensagem de apoio...</p>
         <p class="message-author">- Para sua coragem interior 🌟</p>
-        <button id="newMessageBtn">Nova mensagem</button>
+        <button id="newMessageBtn" class="btn">Nova mensagem</button>
+        <a href="https://nathanlopesoliveira.github.io/SetembroAmarelo/Boticario/Quiz/" id="quizBtn" class="btn">Responder Quiz</a>
     </div>
 </div>
 
