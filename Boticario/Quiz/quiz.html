@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Setembro Amarelo</title>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3175/3175146.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 50%, #F59E0B 100%);
+    }
+    .quiz-card {
+      transition: all 0.3s ease;
+    }
+    .quiz-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center justify-center p-6">
+
+  <!-- Header -->
+  <div class="text-center mb-10">
+    <h1 class="text-5xl font-bold text-amber-900">💛 Quiz Setembro Amarelo 💛</h1>
+    <p class="text-xl text-amber-800 mt-3">Teste seus conhecimentos sobre prevenção do suicídio</p>
+  </div>
+
+  <!-- Quiz Container -->
+  <div id="quiz" class="bg-yellow-50 rounded-3xl shadow-lg p-8 w-full max-w-2xl quiz-card">
+    <div id="question-container" class="mb-6">
+      <!-- Pergunta aparece aqui -->
+    </div>
+    <div id="answer-buttons" class="grid gap-4"></div>
+    <button id="next-btn" class="hidden mt-6 w-full bg-amber-600 text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-amber-700 transition">
+      Próxima Pergunta ➡️
+    </button>
+  </div>
+
+  <!-- Resultado -->
+  <div id="result-container" class="hidden bg-yellow-100 rounded-3xl shadow-lg p-8 w-full max-w-2xl text-center mt-8">
+    <h2 class="text-3xl font-bold text-amber-900 mb-4">Resultado do Quiz</h2>
+    <p id="score-text" class="text-xl text-amber-800"></p>
+    <button onclick="startQuiz()" class="mt-6 bg-amber-600 text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-amber-700 transition">
+      Refazer Quiz 🔄
+    </button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "O que simboliza a fita amarela em Setembro Amarelo?",
+        answers: [
+          { text: "Amor e amizade", correct: false },
+          { text: "Conscientização sobre o suicídio", correct: true },
+          { text: "Esperança e saúde", correct: false },
+          { text: "Combate ao câncer", correct: false }
+        ]
+      },
+      {
+        question: "Qual é o número do CVV (Centro de Valorização da Vida)?",
+        answers: [
+          { text: "188", correct: true },
+          { text: "192", correct: false },
+          { text: "180", correct: false },
+          { text: "190", correct: false }
+        ]
+      },
+      {
+        question: "Setembro Amarelo teve início em qual país?",
+        answers: [
+          { text: "Brasil", correct: false },
+          { text: "Estados Unidos", correct: true },
+          { text: "Japão", correct: false },
+          { text: "Portugal", correct: false }
+        ]
+      },
+      {
+        question: "O que fazer ao perceber que alguém pode estar em sofrimento?",
+        answers: [
+          { text: "Ignorar para não incomodar", correct: false },
+          { text: "Conversar e ouvir sem julgamentos", correct: true },
+          { text: "Evitar o assunto", correct: false },
+          { text: "Dar conselhos imediatos", correct: false }
+        ]
+      }
+    ];
+
+    const questionContainer = document.getElementById("question-container");
+    const answerButtons = document.getElementById("answer-buttons");
+    const nextButton = document.getElementById("next-btn");
+    const resultContainer = document.getElementById("result-container");
+    const scoreText = document.getElementById("score-text");
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+      currentQuestionIndex = 0;
+      score = 0;
+      resultContainer.classList.add("hidden");
+      document.getElementById("quiz").classList.remove("hidden");
+      showQuestion();
+    }
+
+    function showQuestion() {
+      resetState();
+      let currentQuestion = questions[currentQuestionIndex];
+      questionContainer.innerHTML = `<h2 class="text-2xl font-bold text-amber-900 mb-4">${currentQuestion.question}</h2>`;
+      currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.classList.add("bg-amber-100", "text-amber-900", "w-full", "py-3", "rounded-xl", "text-lg", "font-medium", "hover:bg-amber-200", "transition");
+        if (answer.correct) {
+          button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+        answerButtons.appendChild(button);
+      });
+    }
+
+    function resetState() {
+      nextButton.classList.add("hidden");
+      while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+      }
+    }
+
+    function selectAnswer(e) {
+      const selectedButton = e.target;
+      const correct = selectedButton.dataset.correct === "true";
+      if (correct) {
+        score++;
+        selectedButton.classList.add("bg-green-400", "text-white");
+      } else {
+        selectedButton.classList.add("bg-red-400", "text-white");
+      }
+      Array.from(answerButtons.children).forEach(button => {
+        button.disabled = true;
+        if (button.dataset.correct === "true") {
+          button.classList.add("bg-green-400", "text-white");
+        }
+      });
+      nextButton.classList.remove("hidden");
+    }
+
+    nextButton.addEventListener("click", () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      document.getElementById("quiz").classList.add("hidden");
+      resultContainer.classList.remove("hidden");
+      scoreText.innerText = `Você acertou ${score} de ${questions.length} perguntas.`;
+    }
+
+    startQuiz();
+  </script>
+</body>
+</html>
